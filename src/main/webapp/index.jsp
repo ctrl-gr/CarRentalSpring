@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<a href="log/getLogin">Login</a>
 <a href="user/new">New user</a>
 <a href="user/list">List all users</a>
 <a href="car/list">List all cars</a>

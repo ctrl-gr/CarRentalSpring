@@ -34,7 +34,10 @@
       <td><label for="model">Model: </label> </td>
       <td><form:input path="model" id="model"/></td>
     </tr>
-
+    <tr>
+      <td><label for="year">Year: </label> </td>
+      <td><form:input path="year" id="year"/></td>
+    </tr>
     <tr>
       <td><label for="type">Type: </label> </td>
       <td><form:input path="type" id="type"/></td>

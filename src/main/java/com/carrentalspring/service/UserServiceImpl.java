@@ -17,16 +17,15 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
-    @Override
-    @Transactional
 
+    @Override
     public void saveUser(User user) {
 
         userDao.saveUser(user);
     }
 
     @Override
-    @Transactional
+
     public void updateUser(User user) {
         User entity = userDao.getUserById(user.getId());
         if (entity != null) {
@@ -36,23 +35,35 @@ public class UserServiceImpl implements UserService {
             user.setUsername(user.getUsername());
             user.setPassword(user.getPassword());
         }
+        userDao.saveUser(entity);
     }
 
     @Override
-    @Transactional
+
 
     public User getUser(int id) {
         return userDao.getUserById(id);
     }
 
     @Override
-    @Transactional
+
     public void deleteUser(User user) {
         userDao.deleteUser(user);
     }
 
     @Override
-    @Transactional
+    public boolean validateUser(User user) {
+        return userDao.validateUser(user);
+    }
+
+    @Override
+    public boolean validateUserAdmin(User user) {
+        return userDao.validateUserAdmin(user);
+    }
+
+
+    @Override
+
     public List<User> getUsers() {
         return userDao.getUsers();
     }

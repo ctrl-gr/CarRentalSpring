@@ -30,6 +30,6 @@
     </c:forEach>
 </table>
 <br/>
-<a href="car/new" />Add New Car</a>
+<a href="./new" />Add New Car</a>
 </body>
 </html>

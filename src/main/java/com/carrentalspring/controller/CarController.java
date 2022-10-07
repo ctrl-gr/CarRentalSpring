@@ -1,13 +1,17 @@
 package com.carrentalspring.controller;
 
+import com.carrentalspring.model.Booking;
 import com.carrentalspring.model.Car;
 import com.carrentalspring.service.CarService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -21,22 +25,22 @@ public class CarController {
     }
 
 
-    @RequestMapping(value= "/list", method = RequestMethod.GET)
-    public String listCars(ModelMap model) {
+    @GetMapping("/list")
+    public String listCars(Model model) {
 
         List<Car> cars = carService.getCars();
         model.addAttribute("cars", cars);
         return "allCars";
     }
 
-    @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
-    public String newCar(ModelMap model) {
+    @GetMapping("/new")
+    public String newCar(Model model) {
         Car car = new Car();
         model.addAttribute("car", car);
         return "carForm";
     }
 
-    @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
+    @PostMapping("/new")
     public String saveCar(Car car,
                            ModelMap model) {
 
@@ -46,7 +50,7 @@ public class CarController {
         return "success";
     }
 
-    @RequestMapping(value = {"/edit"}, method = RequestMethod.POST)
+    @PostMapping("/edit")
     public String updateCar(Car car, Model model) {
         carService.updateCar(car);
 
@@ -54,28 +58,21 @@ public class CarController {
         return "success";
 
     }
-/*
-    @RequestMapping(value = {"/getAvailableCars"}, method = RequestMethod.POST)
-    public String getAvailableCars(@RequestParam (value="username") String username, @DateTimeFormat(pattern="dd-MM-yyyy") @RequestParam(value="startDate") Date startDate, @RequestParam(value ="endDate") Date endDate, Model model) {
 
-        model.addAttribute("username");
-        model.addAttribute("startDate");
-        model.addAttribute("endDate");
-        return "availableCars";
-    }
-*/
+    @PostMapping("/getAvailableCars")
+    public String getAvailableCars(String startDate, String endDate, Model model) throws ParseException {
 
- /*
-    @RequestMapping(value = {"/showAvailableCars"}, method = RequestMethod.POST)
-    public String showAvailableCars(@RequestParam (value="username") String username, @RequestParam (value="startDate") @DateTimeFormat(pattern="dd-MM-yyyy") Date startDate, @RequestParam(value ="endDate") Date endDate) {
-        carService.getAvailableCars(startDate, endDate);
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        List<Car> availableCars = carService.getAvailableCars(df.parse(startDate), df.parse(endDate));
+        model.addAttribute("availableCars",availableCars);
+
         return "availableCars";
     }
 
- */
 
-
-    @RequestMapping(value = { "/delete" }, method = RequestMethod.GET)
+    @GetMapping("/delete")
     public String deleteCar(Car car,
                              ModelMap model) {
 

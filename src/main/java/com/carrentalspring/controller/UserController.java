@@ -7,8 +7,11 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
@@ -45,10 +48,11 @@ public class UserController {
         return "success";
     }
 
+
     @GetMapping("/edit")
     public String updateUser(User user, Model model, int id) {
-        User theUser = userService.getUser(id);
-        model.addAttribute("user", theUser);
+        user = userService.getUser(id);
+        model.addAttribute("user", user);
 
         return "userForm";
     }
@@ -59,6 +63,9 @@ public class UserController {
         model.addAttribute("success", "User " + user.getUsername() + " updated successfully");
         return "success";
     }
+
+
+
 
     @GetMapping("/delete")
     public String deleteUser(User user, Model model) {

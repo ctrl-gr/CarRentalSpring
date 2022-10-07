@@ -2,6 +2,7 @@ package com.carrentalspring.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -28,19 +29,63 @@ public class UserDaoImpl implements UserDao {
        User theUser = currentSession.get(User.class, id);
        return theUser;
     }
+
+    @Override
     public void saveUser(User user) {
 
-        Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.saveOrUpdate(user);
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(user);
     }
 
-
+    @Override
     public void deleteUser(User user) {
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(user);
     }
+    @Override
+    public boolean validateUser(User user) {
+        Session session = sessionFactory.getCurrentSession();
 
+        try {
+            Query query = session.createQuery("from User where username =:username and password =:password", User.class);
+            query.setParameter("username", user.getUsername());
+            query.setParameter("password", user.getPassword());
+            user = (User) query.getSingleResult();
+
+            if (user != null) {
+                return true;
+            }
+        }   catch(NoResultException e){
+                e.printStackTrace();
+
+            }
+        return false;
+        }
+
+        @Override
+        public boolean validateUserAdmin(User user) {
+            Session session = sessionFactory.getCurrentSession();
+
+            try {
+                Query query = session.createQuery("from User where username =:username and password =:password", User.class);
+                query.setParameter("username", user.getUsername());
+                query.setParameter("password", user.getPassword());
+                user = (User) query.getSingleResult();
+
+                if (user != null && user.getUsername().equals("admin") && user.getPassword().equals("admin")) {
+                    return true;
+                }
+            }   catch(NoResultException e){
+                e.printStackTrace();
+
+            }
+            return false;
+        }
+
+
+
+    @Override
     public List<User> getUsers() {
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();

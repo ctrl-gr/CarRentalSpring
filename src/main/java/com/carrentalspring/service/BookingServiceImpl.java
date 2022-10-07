@@ -35,6 +35,8 @@ public class BookingServiceImpl implements BookingService {
             booking.setEndDate(booking.getEndDate());
             booking.setIsApproved(booking.getIsApproved());
         }
+
+        bookingDao.saveBooking(entity);
     }
 
     @Override

@@ -3,13 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Car list</title>
 </head>
 
 <body>
 <h2>Available cars</h2>
-${username}, here you are the available cars from ${startDate} to ${endDate}
+<!--${username},--> here you are the available cars from ${startDate} to ${endDate}
 <table>
     <tr>
         <td>License Plate</td>
@@ -18,15 +17,19 @@ ${username}, here you are the available cars from ${startDate} to ${endDate}
         <td>Type</td>
         <td>Year</td>
         <td>Seats</td>
+        <td>Book</td>
     </tr>
     <c:forEach items="${availableCars}" var="car">
         <tr>
-            <td>${car.licensePlate}</td>
-            <td>${car.manufacturer}</td>
-            <td>${car.model}</td>
-            <td>${car.type}</td>
-            <td>${car.year}</td>
-            <td>${car.seats}</td>
+            <td><c:out value="${car.licensePlate}"/></td>
+            <td><c:out value="${car.manufacturer}"/></td>
+            <td><c:out value="${car.model}"/></td>
+            <td><c:out value="${car.type}"/></td>
+            <td><c:out value="${car.year}"/></td>
+            <td><c:out value="${car.seats}"/></td>
+            <td><form action="${pageContext.request.contextPath}/booking/new" method="post">
+                <input type="submit" value="Book">
+            </form></td>
         </tr>
     </c:forEach>
 </table>

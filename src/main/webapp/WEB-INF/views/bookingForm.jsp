@@ -15,18 +15,18 @@
 
 <h2>Booking Form</h2>
 
-<form:form method="POST" action="getAvailableCars">
+<form:form method="POST" action="${pageContext.request.contextPath}/car/getAvailableCars" modelAttribute="booking">
   <form:input type="hidden" path="id" id="id"/>
   <table>
     <tr>
       <td><label for="startDate">Start Date: </label> </td>
-      <td><form:input path="startDate" id="startDate"/></td>
+      <td><form:input type="date" path="startDate" id="startDate"/></td>
 
     </tr>
 
     <tr>
       <td><label for="endDate">End Date: </label> </td>
-      <td><form:input path="endDate" id="endDate"/></td>
+      <td><form:input type="date" path="endDate" id="endDate"/></td>
 
     </tr>
     <tr>

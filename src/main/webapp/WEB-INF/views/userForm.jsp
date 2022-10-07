@@ -55,6 +55,6 @@
 </form:form>
 <br/>
 <br/>
-Go back to <a href="./list">List of All Employees</a>
+Go back to <a href="./list">List of Users</a>
 </body>
 </html>

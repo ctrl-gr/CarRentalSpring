@@ -1,14 +1,18 @@
 package com.carrentalspring.dao;
 
+
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
+
+import com.carrentalspring.model.Booking;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
 import org.springframework.stereotype.Repository;
 
 
@@ -37,6 +41,7 @@ public class CarDaoImpl implements CarDao {
         session.saveOrUpdate(car);
     }
 
+
     @Override
     public void deleteCar(Car car) {
         Session session = sessionFactory.getCurrentSession();
@@ -53,33 +58,41 @@ public class CarDaoImpl implements CarDao {
         Query query = session.createQuery(cq);
         return query.getResultList();
     }
-/*
+
+    @Override
     public List<Car> getAvailableCars(Date startDate, Date endDate) {
-            Criteria criteria = createEntityCriteria();
-            Criterion start = Restrictions.le("startDate", endDate);
-            Criterion end = Restrictions.ge("endDate", startDate);
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Booking> queryBooking = builder.createQuery(Booking.class);
+        Root<Booking> root = queryBooking.from(Booking.class);
 
-            criteria.add(Restrictions.and(start, end));
+        List<Predicate> fromStartToEnd = new ArrayList<Predicate>();
+        Predicate onStart = builder.lessThanOrEqualTo(root.get("startDate"), endDate);
+        Predicate onEnd = builder.greaterThanOrEqualTo(root.get("endDate"), startDate);
+        fromStartToEnd.add(onStart);
+        fromStartToEnd.add(onEnd);
+        queryBooking.select(root).where(fromStartToEnd.toArray(new Predicate[]{}));
 
+        List<Booking> bookings = session.createQuery(queryBooking).getResultList();
+        List<Car> bookedCars = new ArrayList<>();
 
-            List<Booking> bookings = criteria.list();
-            List<Integer> bookedCars = new ArrayList<>();
-            for (Booking booking : bookings) {
-                if (booking.getCar() != null && !bookedCars.contains(booking.getCar().getId())) {
-                    bookedCars.add(booking.getCar().getId());
-                }
+        for (Booking booking : bookings) {
+            if (booking.getCar() != null && !bookedCars.contains(booking.getCar())) {
+                bookedCars.add(booking.getCar());
             }
-
-            Criteria criteriaCars = createEntityCriteria();
-            if (bookedCars.size() > 0) {
-                Criterion notInAnyCars = Restrictions.not(Restrictions.in("id", bookedCars));
-                criteriaCars.add(notInAnyCars);
-            }
-
-            List<Car> availableCars = criteriaCars.list();
-
-            return availableCars;
         }
-    */
-}
 
+        CriteriaQuery<Car> queryCars = builder.createQuery(Car.class);
+        Root<Car> rootCar = queryCars.from(Car.class);
+
+        if (bookedCars.size() > 0) {
+            Predicate inAnyBooking = root.get("car").in(bookings);
+            Predicate notInAnyBooking = builder.not(inAnyBooking);
+            queryCars.select(rootCar).where(notInAnyBooking);
+        }
+
+        List<Car> availableCars = session.createQuery(queryCars).getResultList();
+
+        return availableCars;
+    }
+}

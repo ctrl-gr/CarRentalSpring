@@ -5,13 +5,13 @@
     <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Registration Confirmation Page</title>
+        <title>Login successful</title>
 </head>
 <body>
-message : ${success}
+${success}
 <br/>
 <br/>
-Go back to <a href="./list" />List all users</a>
+Perform some actions. <a href="./list">Make a new reservation</a> or <a href="">view all your reservations</a>
 
 </body>
 

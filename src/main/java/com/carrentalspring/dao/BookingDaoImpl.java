@@ -5,8 +5,10 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.carrentalspring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -48,5 +50,15 @@ public class BookingDaoImpl implements BookingDao {
         cq.select(root);
         Query query = session.createQuery(cq);
         return query.getResultList();
+    }
+
+    @Override
+    public List<Booking> getBookingsByUser(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        Predicate theUser =
+        CriteriaQuery<Booking> query = builder.createQuery(Booking.class).where();
+
+
     }
 }

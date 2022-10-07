@@ -1,6 +1,7 @@
 package com.carrentalspring.service;
 
 
+import java.util.Date;
 import java.util.List;
 
 import com.carrentalspring.dao.CarDao;
@@ -36,6 +37,7 @@ public class CarServiceImpl implements CarService {
             car.setYear(car.getYear());
             car.setSeats(car.getSeats());
         }
+        carDao.saveCar(entity);
     }
     @Override
     @Transactional
@@ -49,13 +51,14 @@ public class CarServiceImpl implements CarService {
         carDao.deleteCar(car);
     }
 
-    /*
+    @Override
+    @Transactional
     public List<Car> getAvailableCars(Date startDate, Date endDate) {
 
         return carDao.getAvailableCars(startDate, endDate);
     }
 
-     */
+
     @Override
     @Transactional
     public List<Car> getCars() {
