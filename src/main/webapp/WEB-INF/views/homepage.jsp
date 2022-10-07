@@ -32,7 +32,7 @@ ${msg}
         <form action="${pageContext.request.contextPath}/booking/new" method="get">
             <input type="submit" value="Make a new reservation">
         </form>
-        <form action="${pageContext.request.contextPath}/booking/myList" method="get">
+        <form action="${pageContext.request.contextPath}/booking/myBookings" method="get">
             <input type="submit" value="Show all your bookings">
         </form>
     </c:when>

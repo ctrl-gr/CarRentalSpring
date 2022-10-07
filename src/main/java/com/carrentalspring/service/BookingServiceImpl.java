@@ -3,6 +3,7 @@ package com.carrentalspring.service;
 import java.util.List;
 
 import com.carrentalspring.dao.BookingDao;
+import com.carrentalspring.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,14 +42,14 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     @Transactional
-    public Booking getBookingById(int id) {
-        return bookingDao.getBookingById(id);
+    public void deleteBooking(Booking booking) {
+        bookingDao.deleteBooking(booking);
     }
 
     @Override
     @Transactional
-    public void deleteBooking(Booking booking) {
-        bookingDao.deleteBooking(booking);
+    public List<Booking> getBookingsByUser(User user) {
+        return bookingDao.getBookingsByUser(user);
     }
 
     @Override

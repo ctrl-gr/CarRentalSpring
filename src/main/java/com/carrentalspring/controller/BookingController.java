@@ -2,9 +2,11 @@ package com.carrentalspring.controller;
 
 import com.carrentalspring.model.Booking;
 
+import com.carrentalspring.model.User;
 import com.carrentalspring.service.BookingService;
 import com.carrentalspring.service.CarService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+//TODO check myBookings and saveBooking
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
@@ -35,6 +38,17 @@ public class BookingController {
         return "allBookings";
     }
 
+    @GetMapping("/myBookings")
+    /*this is not working correctly. Getting hibernate exception. In my opinion that's because the query is trying to get
+    data from the DB but is getting back error because in my booking table I just have the booking_id. Null value for
+    user_id, car_id, startDate, endDate
+    */
+    public String myBookings(Model model, User user) {
+        List<Booking> myBookings = bookingService.getBookingsByUser(user);
+        model.addAttribute("myBookings", myBookings);
+        return "userBookings";
+    }
+
     @GetMapping( "/new")
     public String newBooking(ModelMap model) {
         Booking booking = new Booking();
@@ -45,7 +59,7 @@ public class BookingController {
     @PostMapping("/new")
     public String saveBooking(Booking booking,
                           ModelMap model) {
-
+//this is just saving into DB booking_id, anything else
         bookingService.saveBooking(booking);
 
         model.addAttribute("success", "Booking " + booking.getId() + " registered successfully");

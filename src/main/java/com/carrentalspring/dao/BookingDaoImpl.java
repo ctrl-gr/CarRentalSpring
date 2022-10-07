@@ -56,9 +56,11 @@ public class BookingDaoImpl implements BookingDao {
     public List<Booking> getBookingsByUser(User user) {
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        Predicate theUser =
-        CriteriaQuery<Booking> query = builder.createQuery(Booking.class).where();
-
-
+        CriteriaQuery<Booking> query = builder.createQuery(Booking.class);
+        Root<Booking> root = query.from(Booking.class);
+        query.select(root).where(builder.equal(root.get("user"), user));
+        Query queryBooking = session.createQuery(query);
+        List<Booking> userBookings = queryBooking.getResultList();
+        return userBookings;
     }
 }
