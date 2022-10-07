@@ -4,7 +4,6 @@ import com.carrentalspring.model.Booking;
 
 import com.carrentalspring.model.User;
 import com.carrentalspring.service.BookingService;
-import com.carrentalspring.service.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
