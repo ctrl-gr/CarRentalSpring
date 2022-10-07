@@ -58,7 +58,7 @@ public class BookingController {
     @PostMapping("/new")
     public String saveBooking(Booking booking,
                           ModelMap model) {
-//this is just saving into DB booking_id, anything else
+//this is just saving into DB booking_id, anything else. I'm fixing it
         bookingService.saveBooking(booking);
 
         model.addAttribute("success", "Booking " + booking.getId() + " registered successfully");
