@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="/META-INF/resources/webjars/bootstrap/4.1.1/css/bootstrap.css" />
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.1/css/bootstrap.css" />
 </head>
 <body>
 <nav class="nav">
