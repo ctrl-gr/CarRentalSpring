@@ -46,6 +46,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByUsername(String username, String password) {
+        return userDao.getUserByUsername(username, password);
+    }
+
+    @Override
 
     public void deleteUser(User user) {
         userDao.deleteUser(user);

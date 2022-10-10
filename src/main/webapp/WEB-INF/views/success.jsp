@@ -11,7 +11,11 @@
 ${success}
 <br/>
 <br/>
-Perform some actions. <a href="./list">Make a new reservation</a> or <a href="">view all your reservations</a>
+Perform some actions. <a href="./list">Make a new reservation</a> or
+<form action="${pageContext.request.contextPath}/booking/myBookings" method="get" >
+    <input type="hidden" name="userId" value="${user.id}" />
+    <input type="submit" value="Show all your bookings">
+</form>
 
 </body>
 

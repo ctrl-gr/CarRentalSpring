@@ -29,24 +29,24 @@ public class LogInLogOutController {
     @PostMapping("/login")
     public String checkLogin(@ModelAttribute("user") User user, Model model) {
 
-
-        if (user.getUsername().equals("admin")) {
-            if (userService.validateUserAdmin(user)) {
-                model.addAttribute("adminOk", "true");
-                model.addAttribute("msg", "Hi " + user.getUsername() + ". Here are your admin actions");
-                return "homepage";
-            }
-        } else if (userService.validateUser(user)) {
-            model.addAttribute("userOk", "true");
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute("msg", "Hi " + user.getUsername() + ".");
-            return "homepage";
-        } else {
+        User userFound = userService.getUserByUsername(user.getUsername(), user.getPassword());
+        if (userFound == null) {
             model.addAttribute("msg", "Wrong username or password. Please, try to log in again");
             return "login";
+
         }
-        model.addAttribute("msg", "Please, log in");
-        return "login";
+
+        if (userFound.isAdmin()) {
+            model.addAttribute("adminOk", "true");
+            model.addAttribute("user", userFound);
+            model.addAttribute("msg", "Hi " + user.getUsername() + ". Here are your admin actions");
+            return "homepage";
+        } else {
+            model.addAttribute("userOk", "true");
+            model.addAttribute("user", userFound);
+            model.addAttribute("msg", "Hi " + user.getUsername() + ".");
+            return "homepage";
+        }
     }
 
 }

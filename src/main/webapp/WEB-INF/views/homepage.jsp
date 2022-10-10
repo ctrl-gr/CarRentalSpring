@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -30,9 +31,11 @@ ${msg}
     </c:when>
     <c:when test="${userOk == true}">
         <form action="${pageContext.request.contextPath}/booking/new" method="get">
+            <input type="hidden" name="userId" value="${user.id}" />
             <input type="submit" value="Make a new reservation">
         </form>
-        <form action="${pageContext.request.contextPath}/booking/myBookings" method="get">
+        <form action="${pageContext.request.contextPath}/booking/myBookings" method="get" >
+            <input type="hidden" name="userId" value="${user.id}" />
             <input type="submit" value="Show all your bookings">
         </form>
     </c:when>

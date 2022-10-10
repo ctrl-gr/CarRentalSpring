@@ -11,4 +11,6 @@ public interface UserDao {
     boolean validateUser(User user);
     boolean validateUserAdmin(User user);
     List<User> getUsers();
+
+    User getUserByUsername(String username, String password);
 }

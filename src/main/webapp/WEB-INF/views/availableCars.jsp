@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Car list</title>
@@ -27,9 +28,14 @@
             <td><c:out value="${car.type}"/></td>
             <td><c:out value="${car.year}"/></td>
             <td><c:out value="${car.seats}"/></td>
-            <td><form action="${pageContext.request.contextPath}/booking/new" method="post">
+            <td><form:form action="${pageContext.request.contextPath}/booking/new" method="post" modelAttribute="booking">
+                <form:input type="hidden" path="startDate" id="startDate" />
+                <form:input type="hidden" path="endDate" id="endDate" />
+                <input type="hidden" name="userId" value="${booking.user.id}" />
+                <form:input type="hidden" path="isApproved" id="isApproved" />
+                <input type="hidden" name="carId" value="${car.id}" />
                 <input type="submit" value="Book">
-            </form></td>
+            </form:form></td>
         </tr>
     </c:forEach>
 </table>

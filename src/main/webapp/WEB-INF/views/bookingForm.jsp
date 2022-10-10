@@ -16,7 +16,7 @@
 <h2>Booking Form</h2>
 
 <form:form method="POST" action="${pageContext.request.contextPath}/car/getAvailableCars" modelAttribute="booking">
-  <form:input type="hidden" path="id" id="id"/>
+
   <table>
     <tr>
       <td><label for="startDate">Start Date: </label> </td>
@@ -30,6 +30,7 @@
 
     </tr>
     <tr>
+  <input type="hidden" name="userId" value="${userId}" />
       <input type="submit" value="View all the available cars"/>
 
     </tr>

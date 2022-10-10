@@ -2,8 +2,9 @@ package com.carrentalspring.controller;
 
 import com.carrentalspring.model.Booking;
 import com.carrentalspring.model.Car;
+import com.carrentalspring.model.User;
 import com.carrentalspring.service.CarService;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.carrentalspring.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -19,9 +19,11 @@ import java.util.List;
 public class CarController {
 
     private final CarService carService;
+    private final UserService userService;
 
-    public CarController(CarService carService) {
+    public CarController(CarService carService, UserService userService) {
         this.carService = carService;
+        this.userService = userService;
     }
 
 
@@ -60,12 +62,11 @@ public class CarController {
     }
 
     @PostMapping("/getAvailableCars")
-    public String getAvailableCars(String startDate, String endDate, Model model) throws ParseException {
+    public String getAvailableCars(@ModelAttribute("booking")Booking booking, @RequestParam("userId")int userId, Model model) throws ParseException {
 
-        model.addAttribute("startDate", startDate);
-        model.addAttribute("endDate", endDate);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        List<Car> availableCars = carService.getAvailableCars(df.parse(startDate), df.parse(endDate));
+        User user = userService.getUser(userId);
+        booking.setUser(user);
+        List<Car> availableCars = carService.getAvailableCars(booking.getStartDate(),booking.getEndDate());
         model.addAttribute("availableCars",availableCars);
 
         return "availableCars";
