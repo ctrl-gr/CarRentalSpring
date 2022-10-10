@@ -40,6 +40,7 @@ public class BookingController {
 
     @GetMapping("/myBookings")
     public String myBookings(Model model, @RequestParam("userId")int userId) {
+
         User user = userService.getUser(userId);
         List<Booking> myBookings = bookingService.getBookingsByUser(user);
         model.addAttribute("myBookings", myBookings);
@@ -49,17 +50,19 @@ public class BookingController {
 
     @GetMapping("/homepage")
     public String getHomepage(Model model, @RequestParam("userId")int userId) {
+
         String username = userService.getUser(userId).getUsername();
         model.addAttribute("userOk", true);
         model.addAttribute("msg", "Hi " + username + ".");
         model.addAttribute("userId", userId);
         return "homepage";
     }
-
-    @GetMapping( "/new")
+//TODO can not pass userId between servlets
+    @GetMapping( "/getNew")
     public String newBooking(@RequestParam("userId")int userId, ModelMap model) {
 
         Booking booking = new Booking();
+        booking.setUser(userService.getUser(userId));
         model.addAttribute("userId", userId);
         model.addAttribute("booking", booking);
         return "bookingForm";

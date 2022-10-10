@@ -65,9 +65,11 @@ public class CarController {
     public String getAvailableCars(@ModelAttribute("booking")Booking booking, @RequestParam("userId")int userId, Model model) throws ParseException {
 
         User user = userService.getUser(userId);
+        String username = user.getUsername();
         booking.setUser(user);
         List<Car> availableCars = carService.getAvailableCars(booking.getStartDate(),booking.getEndDate());
         model.addAttribute("availableCars",availableCars);
+        model.addAttribute("username", username);
 
         return "availableCars";
     }

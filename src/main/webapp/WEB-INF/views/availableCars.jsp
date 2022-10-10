@@ -5,12 +5,13 @@
 <html>
 <head>
     <title>Car list</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 
 <body>
 <h2>Available cars</h2>
-<!--${username},--> here you are the available cars from ${startDate} to ${endDate}
-<table>
+${username}, here you are the available cars from ${startDate} to ${endDate}
+<table class="table table-dark">
     <tr>
         <td>License Plate</td>
         <td>Manufacturer</td>

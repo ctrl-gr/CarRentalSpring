@@ -75,6 +75,7 @@ public class CarDaoImpl implements CarDao {
 
         List<Booking> bookings = session.createQuery(queryBooking).getResultList();
         List<Car> bookedCars = new ArrayList<>();
+//TODO there is a problem on trying to book a car on the same date of another one already booked. Getting error 505.
 
         for (Booking booking : bookings) {
             if (booking.getCar() != null && !bookedCars.contains(booking.getCar())) {

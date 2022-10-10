@@ -39,11 +39,13 @@ public class LogInLogOutController {
         if (userFound.isAdmin()) {
             model.addAttribute("adminOk", "true");
             model.addAttribute("user", userFound);
+            model.addAttribute("userId", userFound.getId());
             model.addAttribute("msg", "Hi " + user.getUsername() + ". Here are your admin actions");
             return "homepage";
         } else {
             model.addAttribute("userOk", "true");
             model.addAttribute("user", userFound);
+            model.addAttribute("userId", userFound.getId());
             model.addAttribute("msg", "Hi " + user.getUsername() + ".");
             return "homepage";
         }

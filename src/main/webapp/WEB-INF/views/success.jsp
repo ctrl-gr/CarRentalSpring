@@ -4,8 +4,8 @@
 
     <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Login successful</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
 ${success}

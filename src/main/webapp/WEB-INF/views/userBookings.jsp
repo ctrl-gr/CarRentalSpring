@@ -4,14 +4,27 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Bookings list</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Car Rental</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/booking/homepage">Homepage <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew">Make a new reservation</a>
+            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/myBookings">Show all my reservations</a>
+        </div>
+    </div>
+</nav>
 
 
 <body>
 <h2>Bookings list</h2>
-<table>
+<table class="table table-dark">
     <tr>
         <td>Username</td>
         <td>Car License Plate</td>

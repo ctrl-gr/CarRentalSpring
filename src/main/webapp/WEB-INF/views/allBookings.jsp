@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Bookings list</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 
 
 <body>
 <h2>Bookings list</h2>
-<table>
+<table class="table table-dark">
     <tr>
         <td>Username</td>
         <td>Car License Plate</td>

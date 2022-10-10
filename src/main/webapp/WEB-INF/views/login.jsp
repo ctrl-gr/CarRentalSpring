@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
 ${msg}

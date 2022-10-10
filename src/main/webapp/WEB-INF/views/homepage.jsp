@@ -5,14 +5,21 @@
 <html>
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.1.1/css/bootstrap.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.1.1/css/bootstrap.min.css" />
 </head>
 <body>
-<nav class="nav">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-    <a class="nav-link" href="#">Link</a>
-    <a class="nav-link" href="#">Link</a>
-    <a class="nav-link disabled">Disabled</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Car Rental</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/booking/homepage">Homepage <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew">Make a new reservation</a>
+            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/myBookings">Show all my reservations</a>
+        </div>
+    </div>
 </nav>
 ${msg}
 <c:choose>
@@ -29,7 +36,7 @@ ${msg}
         <form action="${pageContext.request.contextPath}/car/list" method="get">
             <input type="submit" value="Show all cars">
         </form>
-        <form action="${pageContext.request.contextPath}/booking/new" method="get">
+        <form action="${pageContext.request.contextPath}/booking/getNew" method="get">
             <input type="hidden" name="userId" value="${user.id}" />
             <input type="submit" value="Insert new booking">
         </form>
@@ -38,7 +45,7 @@ ${msg}
         </form>
     </c:when>
     <c:when test="${userOk == true}">
-        <form action="${pageContext.request.contextPath}/booking/new" method="get">
+        <form action="${pageContext.request.contextPath}/booking/getNew" method="get">
             <input type="hidden" name="userId" value="${user.id}" />
             <input type="submit" value="Make a new reservation" />
         </form>

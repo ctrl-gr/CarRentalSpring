@@ -6,8 +6,8 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>User Registration Form</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.1.1/css/bootstrap.min.css" />
 
 </head>
 
@@ -17,7 +17,7 @@
 
 <form:form method="POST" modelAttribute="user" action="./new">
     <form:input type="hidden" path="id" id="id"/>
-    <table>
+    <table class="table table-dark">
         <tr>
             <td><label for="firstName">First name: </label> </td>
             <td><form:input path="firstName" id="firstName"/></td>
