@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//TODO check myBookings and saveBooking
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
@@ -40,12 +39,21 @@ public class BookingController {
     }
 
     @GetMapping("/myBookings")
-
     public String myBookings(Model model, @RequestParam("userId")int userId) {
         User user = userService.getUser(userId);
         List<Booking> myBookings = bookingService.getBookingsByUser(user);
         model.addAttribute("myBookings", myBookings);
+        model.addAttribute("userId", userId);
         return "userBookings";
+    }
+
+    @GetMapping("/homepage")
+    public String getHomepage(Model model, @RequestParam("userId")int userId) {
+        String username = userService.getUser(userId).getUsername();
+        model.addAttribute("userOk", true);
+        model.addAttribute("msg", "Hi " + username + ".");
+        model.addAttribute("userId", userId);
+        return "homepage";
     }
 
     @GetMapping( "/new")
@@ -60,7 +68,7 @@ public class BookingController {
     @PostMapping("/new")
     public String saveBooking(@ModelAttribute("booking")Booking booking, @RequestParam("carId")int carId, @RequestParam("userId")int userId,
                           ModelMap model) {
-//this is just saving into DB booking_id, anything else. I'm fixing it
+
         Car car = carService.getCarById(carId);
         User user = userService.getUser(userId);
         booking.setUser(user);

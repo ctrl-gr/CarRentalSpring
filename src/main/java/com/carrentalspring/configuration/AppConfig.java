@@ -30,8 +30,8 @@ public class AppConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/resources/**", "/webjars/**")
-                .addResourceLocations("/resources/", "/webjars/")
-                .resourceChain(false);
+                .addResourceLocations("/resources/", "/webjars/");
+
 
     }
 }

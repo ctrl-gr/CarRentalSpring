@@ -32,7 +32,7 @@
 
         <tr>
             <td><label for="birthDate">Birth Date: </label> </td>
-            <td><form:input path="birthDate" id="birthDate"/></td>
+            <td><form:input type="date" path="birthDate" id="birthDate"/></td>
         </tr>
 
         <tr>

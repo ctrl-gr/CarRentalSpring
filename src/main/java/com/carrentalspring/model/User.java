@@ -34,16 +34,19 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "is_admin", nullable = false)
+
+    private boolean isAdmin;
+
     public boolean isAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    @Column(name = "is_admin", nullable = false)
-    private boolean isAdmin = false;
+
 
     public int getId() {
         return id;

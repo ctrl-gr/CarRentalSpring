@@ -58,6 +58,6 @@
 </form:form>
 <br/>
 <br/>
-Go back to <a href="booking/list">List of All Bookings</a>
+Go back to <a href="car/list">List of all cars</a>
 </body>
 </html>

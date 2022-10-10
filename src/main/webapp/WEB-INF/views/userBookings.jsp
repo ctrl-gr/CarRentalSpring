@@ -30,8 +30,9 @@
     </c:forEach>
 </table>
 <br/>
-<form action="homepage.jsp"/>
-<input type="submit" value="Go back to homepage" />
+<form action="${pageContext.request.contextPath}/booking/homepage" method="get">
+    <input type="hidden" name="userId" value="${userId}" />
+    <input type="submit" value="Go back to the homepage" />
 </form>
 </body>
 </html>
