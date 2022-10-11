@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
@@ -28,16 +26,18 @@ public class CarController {
 
 
     @GetMapping("/list")
-    public String listCars(Model model) {
+    public String listCars(@RequestParam("userId")int userId, Model model) {
 
         List<Car> cars = carService.getCars();
+        model.addAttribute("userId", userId);
         model.addAttribute("cars", cars);
         return "allCars";
     }
 
-    @GetMapping("/new")
-    public String newCar(Model model) {
+    @GetMapping("/getNew")
+    public String newCar(@RequestParam("userId")int userId, Model model) {
         Car car = new Car();
+        model.addAttribute("userId", userId);
         model.addAttribute("car", car);
         return "carForm";
     }

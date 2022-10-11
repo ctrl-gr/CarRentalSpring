@@ -49,7 +49,7 @@ public class BookingController {
     }
 
     @GetMapping("/homepage")
-    public String getHomepage(Model model, @RequestParam("userId")int userId) {
+    public String getHomepage(@RequestParam("userId")int userId, Model model) {
 
         String username = userService.getUser(userId).getUsername();
         model.addAttribute("userOk", true);
@@ -63,6 +63,8 @@ public class BookingController {
 
         Booking booking = new Booking();
         booking.setUser(userService.getUser(userId));
+        model.addAttribute("adminOk");
+        model.addAttribute("userOk");
         model.addAttribute("userId", userId);
         model.addAttribute("booking", booking);
         return "bookingForm";

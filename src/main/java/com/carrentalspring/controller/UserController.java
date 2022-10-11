@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -22,16 +23,18 @@ public class UserController {
     }
 
     @GetMapping("/list")
-    public String listUsers(Model model) {
+    public String listUsers(@RequestParam("userId")int userId, Model model) {
 
         List<User> users = userService.getUsers();
+        model.addAttribute("userId", userId);
         model.addAttribute("users", users);
         return "allUsers";
     }
 
-    @GetMapping( "/new" )
-    public String newUser(Model model) {
+    @GetMapping( "/getNew" )
+    public String newUser(@RequestParam("userId")int userId, Model model) {
         User user = new User();
+        model.addAttribute("userId", userId);
         model.addAttribute("user", user);
         return "userForm";
     }

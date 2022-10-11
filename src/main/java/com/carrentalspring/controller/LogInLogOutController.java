@@ -40,7 +40,7 @@ public class LogInLogOutController {
             model.addAttribute("adminOk", "true");
             model.addAttribute("user", userFound);
             model.addAttribute("userId", userFound.getId());
-            model.addAttribute("msg", "Hi " + user.getUsername() + ". Here are your admin actions");
+            model.addAttribute("msg", "Hi " + user.getUsername() + ". Here are your admin actions. Make them through the navbar.");
             return "homepage";
         } else {
             model.addAttribute("userOk", "true");
