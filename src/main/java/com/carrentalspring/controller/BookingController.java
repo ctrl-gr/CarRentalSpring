@@ -91,6 +91,16 @@ public class BookingController {
         return "success";
 
     }
+//TODO can not get car and user from allBookings
+    @PostMapping("/approve")
+    public String approveBooking(@RequestParam("bookingId")int bookingId) {
+
+        Booking bookingToUpdate = bookingService.getBookingById(bookingId);
+        bookingToUpdate.setIsApproved(true);
+        bookingService.updateBooking(bookingToUpdate);
+
+        return "allBookings";
+    }
 
     @GetMapping("/delete")
     public String deleteBooking(Booking booking,

@@ -9,6 +9,7 @@ public interface BookingService {
     void saveBooking(Booking booking);
     void updateBooking(Booking booking);
     void deleteBooking(Booking booking);
+    Booking getBookingById(int id);
     List<Booking> getBookingsByUser(User user);
     List<Booking> getBookings();
 }

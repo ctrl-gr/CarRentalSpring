@@ -11,21 +11,15 @@
   <component name="ChangeListManager">
     <list default="true" id="95fda270-5559-4921-963a-b502511e4bed" name="Changes" comment="Get my bookings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/LogInLogOutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/LogInLogOutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/service/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/service/BookingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allBookings.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allBookings.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allCars.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allCars.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allUsers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allUsers.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/availableCars.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/availableCars.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/bookingForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/bookingForm.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/homepage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/homepage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/success.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userBookings.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userBookings.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +185,8 @@
       <workItem from="1664967825369" duration="14012000" />
       <workItem from="1665040481758" duration="21378000" />
       <workItem from="1665128011752" duration="22928000" />
-      <workItem from="1665385539093" duration="26524000" />
+      <workItem from="1665385539093" duration="26871000" />
+      <workItem from="1665475060769" duration="7416000" />
     </task>
     <task id="LOCAL-00001" summary="Stable version">
       <created>1664973438649</created>
@@ -256,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665410828667</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Get my bookings">
+      <created>1665417323212</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1665417323212</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
