@@ -18,7 +18,7 @@ public class LogInLogOutController {
     public LogInLogOutController(UserService userService) {
         this.userService = userService;
     }
-//TODO show error message when wrong credentials
+//TODO show error message when wrong credentials. And fix homepage
     @GetMapping("/getLogin")
     public String showLogin(Model model) {
         model.addAttribute("msg", "Please enter your login details");
