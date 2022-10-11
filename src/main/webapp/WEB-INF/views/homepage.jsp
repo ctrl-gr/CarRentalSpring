@@ -52,14 +52,7 @@
             </form>
         </c:when>
         <c:when test="${userOk == true}">
-            <form action="${pageContext.request.contextPath}/booking/getNew?userId=${user.id}" method="get">
-                <input type="hidden" name="userId" value="${user.id}"/>
-                <input type="submit" value="Make a new reservation"/>
-            </form>
-            <form action="${pageContext.request.contextPath}/booking/myBookings?userId=${user.id}" method="get">
-                <input type="hidden" name="userId" value="${user.id}"/>
-                <input type="submit" value="Show all your bookings"/>
-            </form>
+            Make a choice with the navbar. Enjoy!
         </c:when>
         <c:otherwise>
             Error.

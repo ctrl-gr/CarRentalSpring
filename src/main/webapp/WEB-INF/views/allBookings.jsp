@@ -40,6 +40,6 @@
     </c:forEach>
 </table>
 <br/>
-<a href="booking/new" />Add new booking</a>
+<a href="booking/getNew" />Add new booking</a>
 </body>
 </html>

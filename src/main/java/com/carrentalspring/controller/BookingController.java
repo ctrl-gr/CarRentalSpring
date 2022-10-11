@@ -57,7 +57,7 @@ public class BookingController {
         model.addAttribute("userId", userId);
         return "homepage";
     }
-//TODO can not pass userId between servlets
+
     @GetMapping( "/getNew")
     public String newBooking(@RequestParam("userId")int userId, ModelMap model) {
 
@@ -91,13 +91,14 @@ public class BookingController {
         return "success";
 
     }
-//TODO can not get car and user from allBookings
+//TODO can not show all bookings with updates
     @PostMapping("/approve")
-    public String approveBooking(@RequestParam("bookingId")int bookingId) {
+    public String approveBooking(@RequestParam("bookingId")int bookingId, Model model) {
 
-        Booking bookingToUpdate = bookingService.getBookingById(bookingId);
-        bookingToUpdate.setIsApproved(true);
-        bookingService.updateBooking(bookingToUpdate);
+        Booking booking = bookingService.getBookingById(bookingId);
+        booking.setIsApproved(true);
+        bookingService.updateBooking(booking);
+        model.addAttribute("booking", booking);
 
         return "allBookings";
     }

@@ -62,7 +62,7 @@ public class CarController {
     }
 
     @PostMapping("/getAvailableCars")
-    public String getAvailableCars(@ModelAttribute("booking")Booking booking, @RequestParam("userId")int userId, Model model) throws ParseException {
+    public String getAvailableCars(@ModelAttribute("booking")Booking booking, @RequestParam("userId")int userId, Model model) {
 
         User user = userService.getUser(userId);
         String username = user.getUsername();

@@ -37,6 +37,6 @@
 </form:form>
 <br/>
 <br/>
-Go back to <a href="${pageContext.request.contextPath}/booking/homepage/${userId}">homepage</a>
+Go back to <a href="${pageContext.request.contextPath}/booking/homepage?userId=${userId}">homepage</a>
 </body>
 </html>
