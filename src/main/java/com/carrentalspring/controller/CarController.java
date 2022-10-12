@@ -92,12 +92,13 @@ public class CarController {
     public String deleteCar(@RequestParam("userId")int userId, Car car,
                              ModelMap model) {
 
+        String licensePlate = car.getLicensePlate();
         carService.deleteCar(car);
-        //store license plate in a tmp variable so you can show it
         boolean carOk = true;
         model.addAttribute("carOk", carOk);
         model.addAttribute("userId", userId);
-        model.addAttribute("success", "Car " + car.getLicensePlate() + " deleted successfully");
+        model.addAttribute("success", "Car " + licensePlate + " deleted successfully");
+        //TODO this is not updating the car list without the deleted cars
         return "success";
     }
 }

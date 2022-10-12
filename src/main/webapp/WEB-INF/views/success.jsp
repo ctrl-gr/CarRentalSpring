@@ -27,8 +27,8 @@
                                 User management area
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="${pageContext.request.contextPath}/user/getNew">Insert new user</a>
-                                <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list">Show all the users</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/user/getNew?userId=${userId}">Insert new user</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list?userId=${userId}">Show all the users</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -37,7 +37,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                 <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make a new reservation</a>
-                                <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list">Show all the bookings</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list?userId=${userId}">Show all the bookings</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -45,8 +45,8 @@
                                 Car management area
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="${pageContext.request.contextPath}/car/getNew">Insert new car</a>
-                                <a class="dropdown-item" href="${pageContext.request.contextPath}/car/list">Show all the cars</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/car/getNew?userId=${userId}">Insert new car</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/car/list?userId=${userId}">Show all the cars</a>
                             </div>
                         </li>
                     </ul>

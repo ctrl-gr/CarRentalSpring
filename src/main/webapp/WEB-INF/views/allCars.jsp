@@ -35,7 +35,7 @@
                     Booking management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list">Show all the
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list?userId=${userId}">Show all the
                         bookings</a>
                 </div>
             </li>
