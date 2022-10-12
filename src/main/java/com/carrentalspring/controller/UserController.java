@@ -3,6 +3,7 @@ package com.carrentalspring.controller;
 import com.carrentalspring.model.User;
 import com.carrentalspring.service.UserService;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping( "/getNew" )
-    public String newUser(@RequestParam("userId")int userId, Model model) {
+    public String newUser(@RequestParam("userId")Optional<String> userId, Model model) {
         User user = new User();
         model.addAttribute("userId", userId);
         model.addAttribute("user", user);

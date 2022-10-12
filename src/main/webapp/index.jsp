@@ -8,7 +8,7 @@
 <body>
 <div class="text-center">
 <a href="log/getLogin">Login</a> <br/> <br/>
-<a href="user/new">New user</a>
+<a href="user/getNew">New user</a>
 </div>
 </body>
 </html>

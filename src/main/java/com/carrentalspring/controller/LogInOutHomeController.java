@@ -30,7 +30,6 @@ public class LogInOutHomeController {
         if (userFound == null) {
             model.addAttribute("msg", "Wrong username or password. Please, try to log in again");
             return "login";
-
         }
 
         if (userFound.isAdmin()) {
