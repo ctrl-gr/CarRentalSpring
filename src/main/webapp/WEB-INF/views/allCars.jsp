@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/booking/homepage?userId=${userId}">Homepage
+                <a class="nav-link" href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
                     <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
@@ -35,8 +35,6 @@
                     Booking management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make
-                        a new reservation</a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list">Show all the
                         bookings</a>
                 </div>
@@ -65,6 +63,8 @@
         <td>Type</td>
         <td>Year</td>
         <td>Seats</td>
+        <td>Edit</td>
+        <td>Delete</td>
     </tr>
     <c:forEach items="${cars}" var="car">
         <tr>
@@ -74,6 +74,9 @@
             <td>${car.type}</td>
             <td>${car.year}</td>
             <td>${car.seats}</td>
+            <td><a href="${pageContext.request.contextPath}/car/getEdit?carId=${car.id}&userId=${userId}"/>Edit car</td>
+            <td><a href="${pageContext.request.contextPath}/car/delete?carId=${car.id}&userId=${userId}"/>Delete car</td>
+            <td></td>
         </tr>
     </c:forEach>
 </table>

@@ -31,9 +31,10 @@ public class BookingController {
 
 
     @GetMapping("/list")
-    public String listBookings(ModelMap model) {
+    public String listBookings(@RequestParam("userId")int userId, Model model) {
 
         List<Booking> bookings = bookingService.getBookings();
+        model.addAttribute("userId", userId);
         model.addAttribute("bookings", bookings);
         return "allBookings";
     }
@@ -48,16 +49,6 @@ public class BookingController {
         return "userBookings";
     }
 
-    @GetMapping("/homepage")
-    public String getHomepage(@RequestParam("userId")int userId, Model model) {
-
-        String username = userService.getUser(userId).getUsername();
-        model.addAttribute("userOk", true);
-        model.addAttribute("msg", "Hi " + username + ".");
-        model.addAttribute("userId", userId);
-        return "homepage";
-    }
-
     @GetMapping( "/getNew")
     public String newBooking(@RequestParam("userId")int userId, ModelMap model) {
 
@@ -66,6 +57,7 @@ public class BookingController {
         model.addAttribute("adminOk");
         model.addAttribute("userOk");
         model.addAttribute("userId", userId);
+
         model.addAttribute("booking", booking);
         return "bookingForm";
     }
@@ -76,12 +68,14 @@ public class BookingController {
 
         Car car = carService.getCarById(carId);
         User user = userService.getUser(userId);
+        boolean userOk = true;
         booking.setUser(user);
         booking.setCar(car);
         bookingService.saveBooking(booking);
 
         model.addAttribute("success", "Booking " + booking.getId() + " registered successfully");
         model.addAttribute("userId", userId);
+        model.addAttribute("userOk", userOk);
         return "success";
     }
 
@@ -95,12 +89,13 @@ public class BookingController {
     }
 //TODO can not show all bookings with updates
     @PostMapping("/approve")
-    public String approveBooking(@RequestParam("bookingId")int bookingId, Model model) {
-
+    public String approveBooking(@RequestParam("bookingId")int bookingId, @RequestParam("userId")int userId, Model model) {
+        List<Booking> bookings = bookingService.getBookings();
         Booking booking = bookingService.getBookingById(bookingId);
         booking.setIsApproved(true);
         bookingService.updateBooking(booking);
-        model.addAttribute("booking", booking);
+        model.addAttribute("userId", userId);
+        model.addAttribute("bookings", bookings);
 
         return "allBookings";
     }

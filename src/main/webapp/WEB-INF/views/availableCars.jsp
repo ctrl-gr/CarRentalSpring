@@ -2,6 +2,7 @@
          pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Car list</title>
@@ -12,47 +13,6 @@
 </head>
 
 <body>
-<c:choose>
-    <c:when test="${adminOk == true}">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">Car Rental</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/booking/homepage?userId=${userId}">Homepage <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            User management area
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/user/getNew">Insert new user</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list">Show all the users</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Booking management area
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make a new reservation</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list">Show all the bookings</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Car management area
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/car/getNew">Insert new car</a>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/car/list">Show all the cars</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </c:when>
-    <c:when test="${userOk== true}">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Car Rental</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -62,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active"
-                       href="${pageContext.request.contextPath}/booking/homepage?userId=${userId}">Homepage
+                       href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
                         <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make
                         a new
@@ -73,10 +33,10 @@
                 </div>
             </div>
         </nav>
-    </c:when>
-</c:choose>
+
 <h2>Available cars</h2>
-${username}, here you are the available cars from ${startDate} to ${endDate}
+Hey ${username}, here you are the available cars from <fmt:formatDate type="date" value="${startDate}" /> to <fmt:formatDate type="date" value="${endDate}" />.
+        <br/> <br/>
 <table class="table table-dark">
     <tr>
         <td>License Plate</td>
@@ -107,6 +67,5 @@ ${username}, here you are the available cars from ${startDate} to ${endDate}
     </c:forEach>
 </table>
 <br/>
-<a href="car/new" />Add New Car</a>
 </body>
 </html>

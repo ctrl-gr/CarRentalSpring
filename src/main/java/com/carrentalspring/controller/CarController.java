@@ -5,11 +5,13 @@ import com.carrentalspring.model.Car;
 import com.carrentalspring.model.User;
 import com.carrentalspring.service.CarService;
 import com.carrentalspring.service.UserService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -47,11 +49,20 @@ public class CarController {
                            ModelMap model) {
 
         carService.saveCar(car);
-
-        model.addAttribute("success", "Car " + car.getLicensePlate() + " registered successfully");
+        boolean carOk = true;
+        model.addAttribute("carOk", carOk);
+        model.addAttribute("success", "Car " + car.getLicensePlate() + " registered successfully.");
         return "success";
     }
 
+    @GetMapping("/getEdit")
+    public String editCar(@RequestParam("carId")int carId, @RequestParam("userId")int userId, Model model) {
+        Car existingCar = carService.getCarById(carId);
+        model.addAttribute("car", existingCar);
+        model.addAttribute("userId", userId);
+        return "carForm";
+
+    }
     @PostMapping("/edit")
     public String updateCar(Car car, Model model) {
         carService.updateCar(car);
@@ -62,12 +73,14 @@ public class CarController {
     }
 
     @PostMapping("/getAvailableCars")
-    public String getAvailableCars(@ModelAttribute("booking")Booking booking, @RequestParam("userId")int userId, Model model) {
+    public String getAvailableCars(@ModelAttribute("booking")Booking booking, @RequestParam("userId")int userId, @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("startDate")Date startDate, @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("endDate")Date endDate, Model model) {
 
         User user = userService.getUser(userId);
         String username = user.getUsername();
         booking.setUser(user);
         List<Car> availableCars = carService.getAvailableCars(booking.getStartDate(),booking.getEndDate());
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
         model.addAttribute("availableCars",availableCars);
         model.addAttribute("username", username);
 
@@ -76,11 +89,14 @@ public class CarController {
 
 
     @GetMapping("/delete")
-    public String deleteCar(Car car,
+    public String deleteCar(@RequestParam("userId")int userId, Car car,
                              ModelMap model) {
 
         carService.deleteCar(car);
-
+        //store license plate in a tmp variable so you can show it
+        boolean carOk = true;
+        model.addAttribute("carOk", carOk);
+        model.addAttribute("userId", userId);
         model.addAttribute("success", "Car " + car.getLicensePlate() + " deleted successfully");
         return "success";
     }

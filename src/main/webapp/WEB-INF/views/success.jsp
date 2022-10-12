@@ -14,13 +14,13 @@
 
     <body>
     <c:choose>
-        <c:when test="${adminOk == true}">
+        <c:when test="${adminOk == true || carOk == true}">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand">Car Rental</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/booking/homepage?userId=${userId}">Homepage <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +53,7 @@
                 </div>
             </nav>
         </c:when>
-        <c:when test="${userOk== true}">
+        <c:when test="${userOk == true}">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">Car Rental</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -63,7 +63,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active"
-                           href="${pageContext.request.contextPath}/booking/homepage?userId=${userId}">Homepage
+                           href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
                             <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make
                             a new
@@ -76,7 +76,7 @@
             </nav>
         </c:when>
     </c:choose>
-
+<br/> <br/>
 ${success}
 <br/>
 <br/>

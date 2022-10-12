@@ -3,22 +3,19 @@ package com.carrentalspring.controller;
 import com.carrentalspring.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.carrentalspring.service.UserService;
 
 @Controller
 @RequestMapping("/log")
-public class LogInLogOutController {
+public class LogInOutHomeController {
     private final UserService userService;
 
-    public LogInLogOutController(UserService userService) {
+    public LogInOutHomeController(UserService userService) {
         this.userService = userService;
     }
-//TODO show error message when wrong credentials. And fix homepage
+//TODO show error message when wrong credentials.
     @GetMapping("/getLogin")
     public String showLogin(Model model) {
         model.addAttribute("msg", "Please enter your login details");
@@ -49,6 +46,16 @@ public class LogInLogOutController {
             model.addAttribute("msg", "Hi " + user.getUsername() + ".");
             return "homepage";
         }
+    }
+
+    @GetMapping("/homepage")
+    public String getHomepage(@RequestParam("userId")int userId, Model model) {
+
+        String username = userService.getUser(userId).getUsername();
+        model.addAttribute("userOk", true);
+        model.addAttribute("msg", "Hi " + username + ".");
+        model.addAttribute("userId", userId);
+        return "homepage";
     }
 
 }
