@@ -22,7 +22,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <div class="navbar-nav">
       <a class="nav-item nav-link active"
-         href="${pageContext.request.contextPath}/booking/homepage?userId=${userId}">Homepage
+         href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
         <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make
         a new
@@ -72,8 +72,9 @@
 
     </tr>
   </table>
+  <input type="submit" value="Register"/>
 </form:form>
-<input type="submit" value="Register"/>
+
 <br/>
 <br/>
 </body>

@@ -9,11 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95fda270-5559-4921-963a-b502511e4bed" name="Changes" comment="User id solved">
+    <list default="true" id="95fda270-5559-4921-963a-b502511e4bed" name="Changes" comment="User registration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/LogInOutHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/LogInOutHomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/success.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userFormUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userFormUser.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +181,7 @@
       <workItem from="1665128011752" duration="22928000" />
       <workItem from="1665385539093" duration="26871000" />
       <workItem from="1665475060769" duration="20366000" />
-      <workItem from="1665558764706" duration="13413000" />
+      <workItem from="1665558764706" duration="14447000" />
     </task>
     <task id="LOCAL-00001" summary="Stable version">
       <created>1664973438649</created>
@@ -302,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665576091992</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="User registration">
+      <created>1665577838474</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1665577838474</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +333,8 @@
     <MESSAGE value="Get my bookings" />
     <MESSAGE value="Approved booking" />
     <MESSAGE value="User id solved" />
-    <option name="LAST_COMMIT_MESSAGE" value="User id solved" />
+    <MESSAGE value="User registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="User registration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

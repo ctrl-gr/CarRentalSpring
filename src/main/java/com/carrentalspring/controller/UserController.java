@@ -37,7 +37,7 @@ public class UserController {
         User user = new User();
         model.addAttribute("userId", userId);
         model.addAttribute("user", user);
-        return "userForm";
+        return "userFormUser";
     }
 
     @PostMapping("/new")
@@ -45,8 +45,7 @@ public class UserController {
                            Model model) {
 
         userService.saveUser(user);
-
-        model.addAttribute("success", "User " + user.getUsername() + " registered successfully");
+        model.addAttribute("success", "User " + user.getUsername() + " registered successfully. Please, log in with your new credentials.");
         return "success";
     }
 

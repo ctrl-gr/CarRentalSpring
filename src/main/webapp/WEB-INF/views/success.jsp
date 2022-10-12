@@ -52,6 +52,11 @@
                     </ul>
                 </div>
             </nav>
+            <br/> <br/>
+            ${success}
+            <br/>
+            <br/>
+            Perform some actions with the navbar.
         </c:when>
         <c:when test="${userOk == true}">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -74,13 +79,21 @@
                     </div>
                 </div>
             </nav>
+            <br/> <br/>
+            ${success}
+            <br/>
+            <br/>
+            Perform some actions with the navbar.
         </c:when>
+        <c:otherwise>
+            <br/> <br/>
+            ${success} <a href="${pageContext.request.contextPath}/log/getLogin">Login</a>.
+            <br/>
+            <br/>
+
+        </c:otherwise>
     </c:choose>
-<br/> <br/>
-${success}
-<br/>
-<br/>
-Perform some actions with the navbar.
+
 
 </body>
 
