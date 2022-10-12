@@ -11,8 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="95fda270-5559-4921-963a-b502511e4bed" name="Changes" comment="User id solved">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/controller/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allCars.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allCars.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/success.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +178,7 @@
       <workItem from="1665128011752" duration="22928000" />
       <workItem from="1665385539093" duration="26871000" />
       <workItem from="1665475060769" duration="20366000" />
-      <workItem from="1665558764706" duration="11067000" />
+      <workItem from="1665558764706" duration="11777000" />
     </task>
     <task id="LOCAL-00001" summary="Stable version">
       <created>1664973438649</created>
@@ -287,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665570071171</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="User id solved">
+      <created>1665570514414</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1665570514414</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
