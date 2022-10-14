@@ -99,13 +99,12 @@ public class BookingController {
     }
 
     @GetMapping("/delete")
-    public String deleteBooking(Booking booking,
+    public String deleteBooking(@RequestParam("bookingId")int bookingId,
                                 Model model) {
-
+        Booking booking = bookingService.getBookingById(bookingId);
         bookingService.deleteBooking(booking);
 
         return listBookings(model);
     }
 
-//TODO delete not working
 }
