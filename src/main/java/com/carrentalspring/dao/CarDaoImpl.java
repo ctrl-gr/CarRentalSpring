@@ -71,15 +71,14 @@ public class CarDaoImpl implements CarDao {
         Predicate onEnd = builder.greaterThanOrEqualTo(root.get("endDate"), startDate);
         fromStartToEnd.add(onStart);
         fromStartToEnd.add(onEnd);
-        queryBooking.select(root).where(fromStartToEnd.toArray(new Predicate[]{}));
+        queryBooking.select(root).where(builder.and(fromStartToEnd.toArray(new Predicate[]{})));
 
         List<Booking> bookings = session.createQuery(queryBooking).getResultList();
-        List<Car> bookedCars = new ArrayList<>();
-//TODO there is a problem on trying to book a car on the same date of another one already booked. Getting error 505.
+        List<Integer> bookedCars = new ArrayList<>();
 
         for (Booking booking : bookings) {
-            if (booking.getCar() != null && !bookedCars.contains(booking.getCar())) {
-                bookedCars.add(booking.getCar());
+            if (booking.getCar() != null && !bookedCars.contains(booking.getCar().getId())) {
+                bookedCars.add(booking.getCar().getId());
             }
         }
 
@@ -87,13 +86,18 @@ public class CarDaoImpl implements CarDao {
         Root<Car> rootCar = queryCars.from(Car.class);
 
         if (bookedCars.size() > 0) {
-            Predicate inAnyBooking = root.get("car").in(bookings);
-            Predicate notInAnyBooking = builder.not(inAnyBooking);
+
+            Predicate notInAnyBooking = builder.not(builder.in(rootCar.get("id")).value(bookedCars));
+
+
             queryCars.select(rootCar).where(notInAnyBooking);
+        } else {
+            queryCars.select(rootCar);
         }
 
-        List<Car> availableCars = session.createQuery(queryCars).getResultList();
+        return session.createQuery(queryCars).getResultList();
 
-        return availableCars;
+
     }
+
 }

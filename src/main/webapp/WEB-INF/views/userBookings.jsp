@@ -14,7 +14,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage</a>
+            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/log/userHomepage?userId=${userId}">Homepage</a>
             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make a new reservation</a>
             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/myBookings?userId=${userId}">Show all my reservations</a>
         </div>

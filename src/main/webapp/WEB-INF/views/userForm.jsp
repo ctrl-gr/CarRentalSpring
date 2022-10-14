@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/booking/homepage?userId=${userId}">Homepage
+                <a class="nav-link" href="${pageContext.request.contextPath}/log/adminHomepage?userId=${userId}">Homepage
                     <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
@@ -61,7 +61,7 @@
 </nav>
 <h2>Registration Form</h2>
 
-<form:form method="POST" modelAttribute="user" action="./new">
+<form:form method="POST" modelAttribute="user" action="${pageContext.request.contextPath}/user/new">
 
 
     <form:input type="hidden" path="id" id="id"/>
@@ -100,9 +100,11 @@
 
         </tr>
     </table>
+    <input type="hidden" name="userId" value="${userId}"/>
+    <input type="submit" value="Register"/>
 </form:form>
 </body>
-<input type="submit" value="Register"/>
+
 <br/>
 <br/>
 </body>

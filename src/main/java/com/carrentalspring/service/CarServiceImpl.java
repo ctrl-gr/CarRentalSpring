@@ -51,12 +51,14 @@ public class CarServiceImpl implements CarService {
         carDao.deleteCar(car);
     }
 
+
     @Override
     @Transactional
     public List<Car> getAvailableCars(Date startDate, Date endDate) {
 
         return carDao.getAvailableCars(startDate, endDate);
     }
+
 
 
     @Override

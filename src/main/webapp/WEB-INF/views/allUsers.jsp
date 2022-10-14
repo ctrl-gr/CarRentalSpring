@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>User list</title>
@@ -15,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/log/adminHomepage?userId=${userId}">Homepage</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,14 +55,18 @@
         <td>Birth Date</td>
         <td>Username</td>
         <td>Paswword</td>
+        <td>Edit</td>
+        <td>Delete</td>
     </tr>
     <c:forEach items="${users}" var="user">
         <tr>
             <td>${user.firstName}</td>
             <td>${user.lastName}</td>
-            <td>${user.birthDate}</td>
+            <td><fmt:formatDate type="date" value="${user.birthDate}" /></td>
             <td>${user.username}</td>
             <td>${user.password}</td>
+            <td><a href="${pageContext.request.contextPath}/user/getEdit?userId=${user.id}"/>Edit user</td>
+            <td><a href="${pageContext.request.contextPath}/user/delete?userId=${user.id}"/>Delete user</td>
         </tr>
     </c:forEach>
 </table>

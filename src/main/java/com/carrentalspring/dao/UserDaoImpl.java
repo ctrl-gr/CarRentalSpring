@@ -8,10 +8,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import com.carrentalspring.configuration.HibernateConfiguration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import com.carrentalspring.model.User;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Repository
@@ -106,4 +108,17 @@ public class UserDaoImpl implements UserDao {
 
         return user;
     }
+    @Transactional
+    @Override
+    public User getUserByUsername(String username) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where username =:username", User.class);
+        query.setParameter("username", username);
+
+        User user = (User) query.getSingleResult();
+
+        return user;
+    }
+
+
 }

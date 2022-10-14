@@ -19,18 +19,7 @@
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active"
-         href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
-        <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make
-        a new
-        reservation</a>
-      <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/myBookings?userId=${userId}">Show
-        all my
-        reservations</a>
-    </div>
+
   </div>
 </nav>
 
@@ -72,6 +61,7 @@
 
     </tr>
   </table>
+  <input type="hidden" name="userId" value="${userId}"/>
   <input type="submit" value="Register"/>
 </form:form>
 

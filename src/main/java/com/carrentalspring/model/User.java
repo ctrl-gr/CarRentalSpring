@@ -11,8 +11,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+
 @Entity
 @Table(name = "user")
+
 public class User {
 
     @Id
@@ -24,7 +26,7 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "birth_date", nullable = false)
     private Date birthDate;
 
@@ -45,7 +47,6 @@ public class User {
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-
 
 
     public int getId() {
@@ -85,6 +86,8 @@ public class User {
         return username;
     }
 
+
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -95,6 +98,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public User() {
+
     }
 
     public String toString() {

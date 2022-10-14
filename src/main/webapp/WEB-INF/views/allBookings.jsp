@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/log/adminHomepage?userId=${userId}">Homepage</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,6 +58,7 @@
         <td>Approved</td>
         <td>Set status</td>
         <td>Update status</td>
+        <td>Delete</td>
     </tr>
     <c:forEach items="${bookings}" var="booking">
         <tr>
@@ -74,6 +75,12 @@
                 <form action="${pageContext.request.contextPath}/booking/approve?userId=${userId}"  method="post">
                     <input type="hidden" value="${booking.id}" name="bookingId"/>
                     <input type="submit" value="Update"/>
+                </form>
+            </td>
+            <td>
+                <form action="${pageContext.request.contextPath}/booking/delete?userId=${userId}"  method="get">
+                    <input type="hidden" value="${booking.id}" name="bookingId"/>
+                    <input type="submit" value="Delete"/>
                 </form>
             </td>
         </tr>

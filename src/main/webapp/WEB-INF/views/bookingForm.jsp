@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav">
             <a class="nav-item nav-link active"
-               href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
+               href="${pageContext.request.contextPath}/log/userHomepage?userId=${userId}">Homepage
                 <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make
                     a new
                     reservation</a>

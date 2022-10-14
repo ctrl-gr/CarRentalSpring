@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
+                <a class="nav-link" href="${pageContext.request.contextPath}/log/adminHomepage?userId=${userId}">Homepage
                     <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
@@ -25,8 +25,8 @@
                     User management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/getNew">Insert new user</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list">Show all the users</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/getNew?userId=${userId}">Insert new user</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list?userId=${userId}">Show all the users</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

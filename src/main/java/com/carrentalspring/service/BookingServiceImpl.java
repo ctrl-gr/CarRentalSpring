@@ -28,16 +28,8 @@ public class BookingServiceImpl implements BookingService {
     @Override
     @Transactional
     public void updateBooking(Booking booking) {
-        Booking entity = bookingDao.getBookingById(booking.getId());
-        if (entity != null) {
-            booking.setUser(booking.getUser());
-            booking.setCar(booking.getCar());
-            booking.setStartDate(booking.getStartDate());
-            booking.setEndDate(booking.getEndDate());
-            booking.setIsApproved(booking.getIsApproved());
-        }
 
-        bookingDao.saveBooking(entity);
+        bookingDao.saveBooking(booking);
     }
 
     @Override

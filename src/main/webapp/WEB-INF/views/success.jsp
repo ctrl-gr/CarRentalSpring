@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
+                        <a class="nav-link" href="${pageContext.request.contextPath}/log/adminHomepage?userId=${userId}">Homepage
                             <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
@@ -82,7 +82,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active"
-                       href="${pageContext.request.contextPath}/log/homepage?userId=${userId}">Homepage
+                       href="${pageContext.request.contextPath}/log/userHomepage?userId=${userId}">Homepage
                         <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link"
                        href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make

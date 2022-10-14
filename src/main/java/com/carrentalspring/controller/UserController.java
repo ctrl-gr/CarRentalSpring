@@ -1,10 +1,13 @@
 package com.carrentalspring.controller;
 
 import com.carrentalspring.model.User;
+import com.carrentalspring.security.CustomUserDetails;
 import com.carrentalspring.service.UserService;
+
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,23 +27,24 @@ public class UserController {
     }
 
     @GetMapping("/list")
-    public String listUsers(@RequestParam("userId")int userId, Model model) {
+    public String listUsers(Model model) {
 
         List<User> users = userService.getUsers();
-        model.addAttribute("userId", userId);
         model.addAttribute("users", users);
         return "allUsers";
     }
 
-    @GetMapping( "/getNew" )
-    public String newUser(@RequestParam("userId")Optional<String> userId, Model model) {
+    @GetMapping("/new")
+    public String newUser(Model model) {
         User user = new User();
-        model.addAttribute("userId", userId);
         model.addAttribute("user", user);
-        return "userFormUser";
+
+        return "userForm";
+
+
     }
 
-    @PostMapping("/new")
+    @PostMapping("/save")
     public String saveUser(User user,
                            Model model) {
 
@@ -50,30 +54,34 @@ public class UserController {
     }
 
 
-    @GetMapping("/edit")
-    public String updateUser(User user, Model model, int id) {
-        user = userService.getUser(id);
+    @GetMapping("/getEdit")
+    public String updateUser(@RequestParam("userId")int userId, Model model) {
+
+        User user = userService.getUser(userId);
         model.addAttribute("user", user);
 
-        return "userForm";
+        return "editUserForm";
     }
 
     @PostMapping("/edit")
     public String updateUser(User user, Model model) {
-        userService.updateUser(user);
+
+        int userId = user.getId();
+        userService.saveUser(user);
+        model.addAttribute("userId", userId);
         model.addAttribute("success", "User " + user.getUsername() + " updated successfully");
+
         return "success";
     }
 
 
-
-
     @GetMapping("/delete")
-    public String deleteUser(User user, Model model) {
+    public String deleteUser(@RequestParam("userId")int userId, Model model) {
 
+        User user = userService.getUser(userId);
         userService.deleteUser(user);
+        model.addAttribute("userId", userId);
 
-        model.addAttribute("success", "User " + user.getUsername() + " deleted successfully");
-        return "success";
+        return listUsers(model);
     }
 }

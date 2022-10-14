@@ -4,12 +4,14 @@ import com.carrentalspring.model.Booking;
 
 import com.carrentalspring.model.Car;
 import com.carrentalspring.model.User;
+import com.carrentalspring.security.CustomUserDetails;
 import com.carrentalspring.service.BookingService;
 import com.carrentalspring.service.CarService;
 import com.carrentalspring.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,84 +33,80 @@ public class BookingController {
 
 
     @GetMapping("/list")
-    public String listBookings(@RequestParam("userId")int userId, Model model) {
+    public String listBookings(Model model) {
 
         List<Booking> bookings = bookingService.getBookings();
-        model.addAttribute("userId", userId);
+
         model.addAttribute("bookings", bookings);
         return "allBookings";
     }
 
     @GetMapping("/myBookings")
-    public String myBookings(Model model, @RequestParam("userId")int userId) {
+    public String myBookings(Model model) {
 
-        User user = userService.getUser(userId);
+        CustomUserDetails currentUser = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUser(currentUser.getId());
         List<Booking> myBookings = bookingService.getBookingsByUser(user);
         model.addAttribute("myBookings", myBookings);
-        model.addAttribute("userId", userId);
         return "userBookings";
     }
 
-    @GetMapping( "/getNew")
-    public String newBooking(@RequestParam("userId")int userId, ModelMap model) {
+    @GetMapping("/getNew")
+    public String newBooking(Model model) {
 
+        CustomUserDetails currentUser = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUser(currentUser.getId());
         Booking booking = new Booking();
-        booking.setUser(userService.getUser(userId));
-        model.addAttribute("adminOk");
-        model.addAttribute("userOk");
-        model.addAttribute("userId", userId);
-
+        booking.setUser(user);
         model.addAttribute("booking", booking);
+
         return "bookingForm";
     }
 
     @PostMapping("/new")
-    public String saveBooking(@ModelAttribute("booking")Booking booking, @RequestParam("carId")int carId, @RequestParam("userId")int userId,
-                          ModelMap model) {
+    public String saveBooking(@ModelAttribute("booking") Booking booking, @RequestParam("carId") int carId,
+                              Model model) {
 
+        CustomUserDetails currentUser = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUser(currentUser.getId());
         Car car = carService.getCarById(carId);
-        User user = userService.getUser(userId);
-        boolean userOk = true;
         booking.setUser(user);
         booking.setCar(car);
         bookingService.saveBooking(booking);
 
         model.addAttribute("success", "Booking " + booking.getId() + " registered successfully");
-        model.addAttribute("userId", userId);
-        model.addAttribute("userOk", userOk);
+
         return "success";
     }
 
     @PostMapping("/edit")
-    public String updateBooking(Booking booking, ModelMap model) {
-        bookingService.updateBooking(booking);
+    public String updateBooking(Booking booking, Model model) {
 
+        bookingService.updateBooking(booking);
         model.addAttribute("success", "Booking " + booking.getId() + " updated successfully");
+
         return "success";
 
     }
-//TODO can not show all bookings with updates
+
     @PostMapping("/approve")
-    public String approveBooking(@RequestParam("bookingId")int bookingId, @RequestParam("userId")int userId, Model model) {
-        List<Booking> bookings = bookingService.getBookings();
+    public String approveBooking(@RequestParam("bookingId") int bookingId, Model model) {
+
         Booking booking = bookingService.getBookingById(bookingId);
         booking.setIsApproved(true);
         bookingService.updateBooking(booking);
-        model.addAttribute("userId", userId);
-        model.addAttribute("bookings", bookings);
 
-        return "allBookings";
+        return listBookings(model);
     }
 
     @GetMapping("/delete")
     public String deleteBooking(Booking booking,
-                            ModelMap model) {
+                                Model model) {
 
         bookingService.deleteBooking(booking);
 
-        model.addAttribute("success", "Booking" + booking.getId() + " deleted successfully");
-        return "success";
+        return listBookings(model);
     }
 
-
+//TODO delete not working
 }
