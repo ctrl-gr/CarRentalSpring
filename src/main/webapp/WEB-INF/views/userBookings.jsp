@@ -43,9 +43,6 @@
     </c:forEach>
 </table>
 <br/>
-<form action="${pageContext.request.contextPath}/login/homepage?userId=${userId}" method="get">
-    <input type="hidden" name="userId" value="${userId}" />
-    <input type="submit" value="Go back to the homepage" />
-</form>
+
 </body>
 </html>

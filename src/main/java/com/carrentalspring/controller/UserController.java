@@ -36,12 +36,20 @@ public class UserController {
 
     @GetMapping("/new")
     public String newUser(Model model) {
+
         User user = new User();
         model.addAttribute("user", user);
 
         return "userForm";
+    }
 
+    @GetMapping("/newFromUser")
+    public String newUserFromUser(Model model) {
 
+        User user = new User();
+        model.addAttribute("user", user);
+
+        return "userFormUser";
     }
 
     @PostMapping("/save")

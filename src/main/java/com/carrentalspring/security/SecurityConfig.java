@@ -46,6 +46,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter
                     "/car/edit/**",
                     "/car/delete/**",
                     "/booking/approve/**",
+                    "/login/homepage/**",
                     "/booking/list/**"
             };
 
@@ -55,7 +56,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
-                .antMatchers("/login/**", "/user/new", "/user/save").permitAll()
+                .antMatchers("/login/form", "/user/new", "/user/save").permitAll()
                 .antMatchers("/").hasAnyRole("ANONYMOUS", "USER")
                 .antMatchers(ADMIN_USERS_MATCHER).access("hasRole('ADMIN')")
                 .and()

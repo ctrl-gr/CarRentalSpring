@@ -61,7 +61,6 @@
 
     </tr>
   </table>
-  <input type="hidden" name="userId" value="${userId}"/>
   <input type="submit" value="Register"/>
 </form:form>
 
