@@ -36,7 +36,6 @@ public class BookingController {
     public String listBookings(Model model) {
 
         List<Booking> bookings = bookingService.getBookings();
-
         model.addAttribute("bookings", bookings);
         return "allBookings";
     }

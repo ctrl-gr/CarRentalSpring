@@ -16,15 +16,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/log/adminHomepage?userId=${userId}">Homepage</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/login/homepage">Homepage</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     User management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/getNew?userId=${userId}">Insert new user</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list?userId=${userId}">Show all the users</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/new">Insert new user</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list">Show all the users</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -32,7 +32,7 @@
                     Booking management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list?userId=${userId}">Show all the bookings</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list">Show all the bookings</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -40,8 +40,8 @@
                     Car management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/car/getNew?userId=${userId}">Insert new car</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/car/list?userId=${userId}">Show all the cars</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/car/new">Insert new car</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/car/list">Show all the cars</a>
                 </div>
             </li>
         </ul>
@@ -54,7 +54,7 @@
         <td>Last Name</td>
         <td>Birth Date</td>
         <td>Username</td>
-        <td>Paswword</td>
+        <td>Password</td>
         <td>Edit</td>
         <td>Delete</td>
     </tr>
@@ -65,8 +65,8 @@
             <td><fmt:formatDate type="date" value="${user.birthDate}" /></td>
             <td>${user.username}</td>
             <td>${user.password}</td>
-            <td><a href="${pageContext.request.contextPath}/user/getEdit?userId=${user.id}"/>Edit user</td>
-            <td><a href="${pageContext.request.contextPath}/user/delete?userId=${user.id}"/>Delete user</td>
+            <td><a href="${pageContext.request.contextPath}/user/edit"/>Edit user</td>
+            <td><a href="${pageContext.request.contextPath}/user/delete"/>Delete user</td>
         </tr>
     </c:forEach>
 </table>

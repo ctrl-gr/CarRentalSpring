@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/log/adminHomepage?userId=${userId}">Homepage
+                <a class="nav-link" href="${pageContext.request.contextPath}/login/homepage">Homepage
                     <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
@@ -25,8 +25,8 @@
                     User management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/getNew?userId=${userId}">Insert new user</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list?userId=${userId}">Show all the users</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/new">Insert new user</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/list">Show all the users</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -35,7 +35,7 @@
                     Booking management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list?userId=${userId}">Show all the
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list">Show all the
                         bookings</a>
                 </div>
             </li>
@@ -45,9 +45,9 @@
                     Car management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/car/getNew?userId=${userId}">Insert
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/car/new">Insert
                         new car</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/car/list?userId=${userId}">Show
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/car/list">Show
                         all the cars</a>
                 </div>
             </li>
@@ -74,8 +74,8 @@
             <td>${car.type}</td>
             <td>${car.year}</td>
             <td>${car.seats}</td>
-            <td><a href="${pageContext.request.contextPath}/car/getEdit?carId=${car.id}&userId=${userId}"/>Edit car</td>
-            <td><a href="${pageContext.request.contextPath}/car/delete?carId=${car.id}&userId=${userId}"/>Delete car</td>
+            <td><a href="${pageContext.request.contextPath}/car/getEdit?carId=${car.id}"/>Edit car</td>
+            <td><a href="${pageContext.request.contextPath}/car/delete?carId=${car.id}"/>Delete car</td>
             <td></td>
         </tr>
     </c:forEach>

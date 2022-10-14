@@ -22,12 +22,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active"
-                       href="${pageContext.request.contextPath}/log/userHomepage?userId=${userId}">Homepage
+                       href="${pageContext.request.contextPath}/login/homepage}">Homepage
                         <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/new">Make
                         a new
                         reservation</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/myBookings?userId=${userId}">Show
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/myBookings">Show
                         all my
                         reservations</a>
                 </div>

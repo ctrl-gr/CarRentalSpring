@@ -52,8 +52,7 @@ public class CarController {
 
         carService.saveCar(car);
 
-        model.addAttribute("success", "Car " + car.getLicensePlate() + " registered successfully.");
-        return "success";
+        return listCars(model);
     }
 
     @GetMapping("/getEdit")

@@ -49,6 +49,15 @@ public class UserController {
                            Model model) {
 
         userService.saveUser(user);
+
+        return listUsers(model);
+    }
+
+    @PostMapping("/register")
+    public String registerUser(User user,
+                           Model model) {
+
+        userService.saveUser(user);
         model.addAttribute("success", "User " + user.getUsername() + " registered successfully. Please, log in with your new credentials.");
         return "success";
     }

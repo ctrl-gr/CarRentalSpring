@@ -22,12 +22,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav">
             <a class="nav-item nav-link active"
-               href="${pageContext.request.contextPath}/log/userHomepage?userId=${userId}">Homepage
-                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/getNew?userId=${userId}">Make
+               href="${pageContext.request.contextPath}/login/homepage">Homepage
+                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/new">Make
                     a new
                     reservation</a>
                 <a class="nav-item nav-link"
-                   href="${pageContext.request.contextPath}/booking/myBookings?userId=${userId}">Show
+                   href="${pageContext.request.contextPath}/booking/myBookings">Show
                     all my
                     reservations</a>
         </div>
@@ -60,7 +60,7 @@
 </form:form>
 <br/>
 <br/>
-<form action="${pageContext.request.contextPath}/log/homepage?userId=${userId}" method="get">
+<form action="${pageContext.request.contextPath}/login/homepage" method="get">
     <input type="submit" value="Go back to the homepage"/>
 </form>
 </body>

@@ -24,7 +24,7 @@
 </nav>
 
 
-<form:form method="POST" modelAttribute="user" action="./new">
+<form:form method="POST" modelAttribute="user" action="./register">
   <form:input type="hidden" path="id" id="id"/>
   <table class="table table-dark">
     <tr>
