@@ -30,6 +30,7 @@
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/booking/myBookings">Show
                         all my
                         reservations</a>
+                    <a class="nav-item nav-link" href="<c:url value="/logout" />"> Log out</a>
                 </div>
             </div>
         </nav>

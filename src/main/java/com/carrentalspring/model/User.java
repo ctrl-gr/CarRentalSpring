@@ -6,7 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -21,19 +24,28 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "first_name", nullable = false)
+    @NotEmpty(message = "First name can not be empty")
+    @Size(min= 1, max = 15, message = "First name size must be between 1 and 15 characters")
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
+    @NotEmpty(message = "Last name can not be empty")
+    @Size(min= 1, max = 15, message = "Last name size must be between 1 and 15 characters")
     private String lastName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "Can not set a future date as birth date")
     @Column(name = "birth_date", nullable = false)
     private Date birthDate;
 
     @Column(name = "username", nullable = false)
+    @NotEmpty(message = "You should choose a username")
+    @Size(min=4, message="Username size must be minimum 4 characters")
     private String username;
 
     @Column(name = "password", nullable = false)
+    @NotEmpty(message = "You should choose a password")
+    @Size(min=8, message="Password size must be minimum 8 characters")
     private String password;
 
     @Column(name = "is_admin", nullable = false)

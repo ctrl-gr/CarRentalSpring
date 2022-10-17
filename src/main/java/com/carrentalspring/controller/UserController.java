@@ -7,13 +7,15 @@ import com.carrentalspring.service.UserService;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -25,6 +27,15 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+
 
     @GetMapping("/list")
     public String listUsers(Model model) {
@@ -62,12 +73,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(User user,
+    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult br,
                            Model model) {
-
-        userService.saveUser(user);
-        model.addAttribute("success", "User " + user.getUsername() + " registered successfully. Please, log in with your new credentials.");
-        return "success";
+        if (br.hasErrors()) {
+            return "userFormUser";
+        } else {
+            userService.saveUser(user);
+            model.addAttribute("success", "User " + user.getUsername() + " registered successfully. Please, log in with your new credentials.");
+            return "success";
+        }
     }
 
 

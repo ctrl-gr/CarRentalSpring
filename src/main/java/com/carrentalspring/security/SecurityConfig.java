@@ -72,7 +72,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter
                 .accessDeniedPage("/login/form?forbidden")
                 .and()
                 .logout()
-                .logoutUrl("/login/form?logout")
+                .logoutUrl("/logout")
                 .and()
                 .csrf().disable();
 

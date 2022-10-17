@@ -45,12 +45,13 @@
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/car/list">Show all the cars</a>
                         </div>
                     </li>
+                    <a class="nav-item nav-link" href="<c:url value="/logout" />"> Log out</a>
                 </ul>
             </div>
         </nav>
 
 <div class="text-center">
-ciao
+Hi
     <br/><br/>
 </div>
 

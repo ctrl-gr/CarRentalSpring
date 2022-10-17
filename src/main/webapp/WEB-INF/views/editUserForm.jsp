@@ -56,6 +56,7 @@
             all the cars</a>
         </div>
       </li>
+      <a class="nav-item nav-link" href="<c:url value="/logout" />"> Log out</a>
     </ul>
   </div>
 </nav>

@@ -11,19 +11,19 @@
 
                     <c:if test="${param.error != null}">
                         <div class="alert alert-danger">
-                            <p>error</p>
+                            <p>Invalid credentials. Try to log in again</p>
                         </div>
                     </c:if>
 
                     <c:if test="${param.forbidden != null}">
                         <div class="alert alert-danger">
-                            <p>forbidden</p>
+                            <p>Access forbidden. Log in again.</p>
                         </div>
                     </c:if>
 
                     <c:if test="${param.logout != null}">
                         <div class="alert alert-success">
-                            <p><spring:message code="login.form.logoutmsg"/></p>
+                            <p>Log out successfully</p>
                         </div>
                     </c:if>
 

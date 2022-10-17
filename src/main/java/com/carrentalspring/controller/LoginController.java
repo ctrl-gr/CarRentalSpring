@@ -19,3 +19,5 @@ public class LoginController {
         return "homepage";
     }
 }
+
+//TODO implement log out
