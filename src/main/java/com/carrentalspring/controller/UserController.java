@@ -1,14 +1,8 @@
 package com.carrentalspring.controller;
 
 import com.carrentalspring.model.User;
-import com.carrentalspring.security.CustomUserDetails;
 import com.carrentalspring.service.UserService;
-
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +10,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -74,7 +69,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult br,
-                           Model model) {
+                               Model model) {
         if (br.hasErrors()) {
             return "userFormUser";
         } else {
@@ -86,7 +81,7 @@ public class UserController {
 
 
     @GetMapping("/getEdit")
-    public String updateUser(@RequestParam("userId")int userId, Model model) {
+    public String updateUser(@RequestParam("userId") int userId, Model model) {
 
         User user = userService.getUser(userId);
         model.addAttribute("user", user);
@@ -107,7 +102,7 @@ public class UserController {
 
 
     @GetMapping("/delete")
-    public String deleteUser(@RequestParam("userId")int userId, Model model) {
+    public String deleteUser(@RequestParam("userId") int userId, Model model) {
 
         User user = userService.getUser(userId);
         userService.deleteUser(user);

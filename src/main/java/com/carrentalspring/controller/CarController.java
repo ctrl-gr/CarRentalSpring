@@ -10,7 +10,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -48,7 +47,7 @@ public class CarController {
 
     @PostMapping("/save")
     public String saveCar(Car car,
-                           Model model) {
+                          Model model) {
 
         carService.saveCar(car);
 
@@ -56,7 +55,7 @@ public class CarController {
     }
 
     @GetMapping("/getEdit")
-    public String editCar(@RequestParam("carId")int carId, Model model) {
+    public String editCar(@RequestParam("carId") int carId, Model model) {
 
         Car existingCar = carService.getCarById(carId);
         model.addAttribute("car", existingCar);
@@ -64,6 +63,7 @@ public class CarController {
         return "carForm";
 
     }
+
     @PostMapping("/edit")
     public String updateCar(Car car, Model model) {
         carService.updateCar(car);
@@ -74,27 +74,25 @@ public class CarController {
     }
 
     @PostMapping("/getAvailableCars")
-    public String getAvailableCars(@ModelAttribute("booking")Booking booking, @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("startDate")Date startDate, @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("endDate")Date endDate, Model model) {
+    public String getAvailableCars(@ModelAttribute("booking") Booking booking, @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam("startDate") Date startDate, @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam("endDate") Date endDate, Model model) {
 
         CustomUserDetails currentUser = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userService.getUser(currentUser.getId());
         String username = user.getUsername();
         booking.setUser(user);
-        List<Car> availableCars = carService.getAvailableCars(booking.getStartDate(),booking.getEndDate());
+        List<Car> availableCars = carService.getAvailableCars(booking.getStartDate(), booking.getEndDate());
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
-        model.addAttribute("availableCars",availableCars);
+        model.addAttribute("availableCars", availableCars);
         model.addAttribute("username", username);
 
         return "availableCars";
     }
 
 
-
-
     @GetMapping("/delete")
-    public String deleteCar( @RequestParam("carId")int carId,
-                             Model model) {
+    public String deleteCar(@RequestParam("carId") int carId,
+                            Model model) {
 
         Car car = carService.getCarById(carId);
         carService.deleteCar(car);

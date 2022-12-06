@@ -1,8 +1,8 @@
 package com.carrentalspring.service;
 
-import java.util.List;
-
 import com.carrentalspring.model.User;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -12,6 +12,7 @@ public interface UserService {
     void deleteUser(User user);
 
     List<User> getUsers();
+
     User getUser(int id);
 
     User getUserByUsername(String username, String password);

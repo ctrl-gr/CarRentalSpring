@@ -1,7 +1,6 @@
 package com.carrentalspring.controller;
 
 import com.carrentalspring.model.Booking;
-
 import com.carrentalspring.model.Car;
 import com.carrentalspring.model.User;
 import com.carrentalspring.security.CustomUserDetails;
@@ -11,7 +10,6 @@ import com.carrentalspring.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -99,7 +97,7 @@ public class BookingController {
     }
 
     @GetMapping("/delete")
-    public String deleteBooking(@RequestParam("bookingId")int bookingId,
+    public String deleteBooking(@RequestParam("bookingId") int bookingId,
                                 Model model) {
         Booking booking = bookingService.getBookingById(bookingId);
         bookingService.deleteBooking(booking);

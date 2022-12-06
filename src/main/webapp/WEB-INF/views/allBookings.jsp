@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -20,7 +20,8 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/login/homepage">Homepage</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     User management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -29,15 +30,18 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Booking management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list">Show all the bookings</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/booking/list">Show all the
+                        bookings</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Car management area
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -65,21 +69,21 @@
         <tr>
             <td>${booking.user.username}</td>
             <td>${booking.car.licensePlate}</td>
-            <td><fmt:formatDate type="date" value="${booking.startDate}" /></td>
-            <td><fmt:formatDate type="date" value="${booking.endDate}" /></td>
+            <td><fmt:formatDate type="date" value="${booking.startDate}"/></td>
+            <td><fmt:formatDate type="date" value="${booking.endDate}"/></td>
             <td>${booking.isApproved}</td>
             <td><select name="approved">
                 <option value="false"> False</option>
                 <option value="true"> True</option>
             </select></td>
             <td>
-                <form action="${pageContext.request.contextPath}/booking/approve"  method="post">
+                <form action="${pageContext.request.contextPath}/booking/approve" method="post">
                     <input type="hidden" value="${booking.id}" name="bookingId"/>
                     <input type="submit" value="Update"/>
                 </form>
             </td>
             <td>
-                <form action="${pageContext.request.contextPath}/booking/delete"  method="get">
+                <form action="${pageContext.request.contextPath}/booking/delete" method="get">
                     <input type="hidden" value="${booking.id}" name="bookingId"/>
                     <input type="submit" value="Delete"/>
                 </form>

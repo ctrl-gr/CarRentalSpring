@@ -1,13 +1,12 @@
 package com.carrentalspring.service;
 
-import java.util.List;
-
 import com.carrentalspring.dao.BookingDao;
+import com.carrentalspring.model.Booking;
 import com.carrentalspring.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.carrentalspring.model.Booking;
+import java.util.List;
 
 @Service
 @Transactional

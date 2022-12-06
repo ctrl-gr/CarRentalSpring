@@ -1,9 +1,6 @@
 package com.carrentalspring.model;
 
 
-
-
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,7 +27,7 @@ public class Booking {
     private Date startDate;
 
     @Column(name = "end_date")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
 
 

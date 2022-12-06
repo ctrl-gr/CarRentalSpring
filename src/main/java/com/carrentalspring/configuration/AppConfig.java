@@ -6,12 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.util.UrlPathHelper;
 
 
 @Configuration
@@ -23,8 +21,7 @@ public class AppConfig implements WebMvcConfigurer {
 
 
     @Bean
-    public MessageSource messageSource()
-    {
+    public MessageSource messageSource() {
         ResourceBundleMessageSource resource = new ResourceBundleMessageSource();
         resource.setBasename("messages");
 
@@ -33,8 +30,7 @@ public class AppConfig implements WebMvcConfigurer {
 
 
     @Bean
-    public InternalResourceViewResolver getInternalResourceViewResolver()
-    {
+    public InternalResourceViewResolver getInternalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(JstlView.class);
 
@@ -43,7 +39,6 @@ public class AppConfig implements WebMvcConfigurer {
 
         return resolver;
     }
-
 
 
     @Override

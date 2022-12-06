@@ -1,14 +1,13 @@
 package com.carrentalspring.service;
 
 
-import java.util.Date;
-import java.util.List;
-
 import com.carrentalspring.dao.CarDao;
+import com.carrentalspring.model.Car;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.carrentalspring.model.Car;
+import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -19,6 +18,7 @@ public class CarServiceImpl implements CarService {
     public CarServiceImpl(CarDao carDao) {
         this.carDao = carDao;
     }
+
     @Override
     @Transactional
     public void saveCar(Car car) {
@@ -29,7 +29,7 @@ public class CarServiceImpl implements CarService {
     @Transactional
     public void updateCar(Car car) {
         Car entity = carDao.getCarById(car.getId());
-        if(entity!=null){
+        if (entity != null) {
             car.setLicensePlate(car.getLicensePlate());
             car.setManufacturer(car.getManufacturer());
             car.setModel(car.getModel());
@@ -39,9 +39,10 @@ public class CarServiceImpl implements CarService {
         }
         carDao.saveCar(entity);
     }
+
     @Override
     @Transactional
-    public Car getCarById(int id){
+    public Car getCarById(int id) {
         return carDao.getCarById(id);
     }
 
@@ -58,7 +59,6 @@ public class CarServiceImpl implements CarService {
 
         return carDao.getAvailableCars(startDate, endDate);
     }
-
 
 
     @Override

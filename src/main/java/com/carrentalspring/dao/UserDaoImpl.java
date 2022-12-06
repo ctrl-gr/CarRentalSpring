@@ -1,19 +1,17 @@
 package com.carrentalspring.dao;
 
-import java.util.List;
+import com.carrentalspring.model.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import com.carrentalspring.configuration.HibernateConfiguration;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Repository;
-import com.carrentalspring.model.User;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 
 @Repository
@@ -27,9 +25,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserById(int id) {
-       Session currentSession = sessionFactory.getCurrentSession();
-       User theUser = currentSession.get(User.class, id);
-       return theUser;
+        Session currentSession = sessionFactory.getCurrentSession();
+        User theUser = currentSession.get(User.class, id);
+        return theUser;
     }
 
     @Override
@@ -45,6 +43,7 @@ public class UserDaoImpl implements UserDao {
         Session session = sessionFactory.getCurrentSession();
         session.delete(user);
     }
+
     @Override
     public boolean validateUser(User user) {
         Session session = sessionFactory.getCurrentSession();
@@ -58,41 +57,40 @@ public class UserDaoImpl implements UserDao {
             if (user != null) {
                 return true;
             }
-        }   catch(NoResultException e){
-                e.printStackTrace();
+        } catch (NoResultException e) {
+            e.printStackTrace();
 
-            }
+        }
         return false;
-        }
+    }
 
-        @Override
-        public boolean validateUserAdmin(User user) {
-            Session session = sessionFactory.getCurrentSession();
+    @Override
+    public boolean validateUserAdmin(User user) {
+        Session session = sessionFactory.getCurrentSession();
 
-            try {
-                Query query = session.createQuery("from User where username =:username and password =:password", User.class);
-                query.setParameter("username", user.getUsername());
-                query.setParameter("password", user.getPassword());
-                user = (User) query.getSingleResult();
+        try {
+            Query query = session.createQuery("from User where username =:username and password =:password", User.class);
+            query.setParameter("username", user.getUsername());
+            query.setParameter("password", user.getPassword());
+            user = (User) query.getSingleResult();
 
-                if (user != null && user.getUsername().equals("admin") && user.getPassword().equals("admin")) {
-                    return true;
-                }
-            }   catch(NoResultException e){
-                e.printStackTrace();
-
+            if (user != null && user.getUsername().equals("admin") && user.getPassword().equals("admin")) {
+                return true;
             }
-            return false;
-        }
+        } catch (NoResultException e) {
+            e.printStackTrace();
 
+        }
+        return false;
+    }
 
 
     @Override
     public List<User> getUsers() {
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery < User > cq = cb.createQuery(User.class);
-        Root < User > root = cq.from(User.class);
+        CriteriaQuery<User> cq = cb.createQuery(User.class);
+        Root<User> root = cq.from(User.class);
         cq.select(root);
         Query query = session.createQuery(cq);
         return query.getResultList();
@@ -108,6 +106,7 @@ public class UserDaoImpl implements UserDao {
 
         return user;
     }
+
     @Transactional
     @Override
     public User getUserByUsername(String username) {

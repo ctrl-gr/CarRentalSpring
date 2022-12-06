@@ -13,8 +13,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig  extends WebSecurityConfigurerAdapter
-{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
 
@@ -23,15 +22,15 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder()
-    {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    };
+    }
+
+    ;
 
 
     @Override
-    public void configure(final AuthenticationManagerBuilder auth) throws Exception
-    {
+    public void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
@@ -51,8 +50,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter
             };
 
     @Override
-    protected void configure(final HttpSecurity http) throws Exception
-    {
+    protected void configure(final HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
@@ -89,5 +87,4 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter
     }
 
 
- 
 }

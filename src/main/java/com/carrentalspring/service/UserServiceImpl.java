@@ -1,14 +1,12 @@
 package com.carrentalspring.service;
 
-import java.util.List;
-
 import com.carrentalspring.dao.UserDao;
-import com.carrentalspring.dao.UserDaoImpl;
+import com.carrentalspring.model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.carrentalspring.model.User;
+import java.util.List;
 
 @Service
 @Transactional

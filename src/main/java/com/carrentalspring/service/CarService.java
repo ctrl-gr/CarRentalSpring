@@ -1,9 +1,9 @@
 package com.carrentalspring.service;
 
+import com.carrentalspring.model.Car;
+
 import java.util.Date;
 import java.util.List;
-
-import com.carrentalspring.model.Car;
 
 public interface CarService {
     void saveCar(Car car);
