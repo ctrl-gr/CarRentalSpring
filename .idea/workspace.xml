@@ -11,6 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="95fda270-5559-4921-963a-b502511e4bed" name="Changes" comment="Log in log out">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carrentalspring/configuration/HibernateConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carrentalspring/configuration/HibernateConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +190,7 @@
       <workItem from="1665823154552" duration="430000" />
       <workItem from="1665989737274" duration="6370000" />
       <workItem from="1666003024165" duration="502000" />
+      <workItem from="1670336280734" duration="1334000" />
     </task>
     <task id="LOCAL-00001" summary="Stable version">
       <created>1664973438649</created>
@@ -364,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665995572378</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Log in log out">
+      <created>1670336396085</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1670336396085</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

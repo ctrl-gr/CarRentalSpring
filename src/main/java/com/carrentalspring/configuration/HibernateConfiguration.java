@@ -1,5 +1,6 @@
 package com.carrentalspring.configuration;
 
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,11 +17,11 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@Builder
 @ComponentScan({"com.carrentalspring.configuration"})
 @PropertySource(value = {"classpath:application.properties"})
 public class HibernateConfiguration {
-    // autowired yes or no with Environment?
-    @Autowired
+
     private Environment environment;
 
     @Bean
